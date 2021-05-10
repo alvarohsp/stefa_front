@@ -16,6 +16,7 @@ import { ListarProfessorComponent } from './pages/private/professor/listar-profe
 import { CadastroComponent } from './pages/public/cadastro/cadastro.component';
 import { LoginComponent } from './pages/public/login/login.component';
 import { PaginaNaoEncontradaComponent } from './pages/public/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { CadastroAlunoComponent } from './pages/public/cadastro-aluno/cadastro-aluno.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -30,6 +31,7 @@ export function tokenGetter() {
     HomeComponent,
     PaginaNaoEncontradaComponent,
     HeaderComponent,
+    CadastroAlunoComponent,
   ],
   imports: [
     BrowserModule,
