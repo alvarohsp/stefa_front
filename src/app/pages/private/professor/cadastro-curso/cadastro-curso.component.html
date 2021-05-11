@@ -1,0 +1,22 @@
+<div class="box">
+    <form [formGroup]="newCursoForm" (ngSubmit)="createCurso()">
+      <div class="mb-3">
+        <label for="tx-nome" class="form-label">Nome</label>
+        <input type="text" formControlName="nome" class="form-control" id="tx-nome"/>
+      </div>
+      <div class="mb-3">
+        <label for="tx-descricao" class="form-label">Descrição</label>
+        <input type="text" formControlName="descricao" class="form-control" id="tx-descricao" />
+      </div>
+      <div class="mb-3">
+        <label for="tx-aulas" class="form-label">Aulas</label>
+        <input type="text" formControlName="aulas" class="form-control" id="tx-aulas" />
+      </div>
+      <div class="mb-3">
+        <label for="tx-idProf" class="form-label">ID Professor</label>
+        <input type="text" formControlName="idProfessor" class="form-control" id="tx-idProf" />
+      </div>
+      <button type="submit" class="btn btn-primary mr-5">Criar curso</button>
+      <a (click)="returnHome()" class="btn btn-outline-primary">Voltar para o inicio</a>
+    </form>
+  </div>

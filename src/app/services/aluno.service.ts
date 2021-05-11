@@ -16,4 +16,8 @@ export class AlunoService {
     return this.httpClient.post<Mensagem>(URL, aluno);
   }
 
+  listar(): Observable<Aluno[]> {
+    return this.httpClient.get<Aluno[]>(URL);
+  }
+
 }

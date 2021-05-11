@@ -1,25 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="showHeader()">
   <div class="container-fluid">
-    <a class="navbar-brand" href="">Stefacoin</a>
+    <a class="navbar-brand" href="">Stefa_front</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" *ngIf="usuario?.tipo === 1">
-          <a class="nav-link active" aria-current="page" href="#">Listar Alunos</a>
+          <a [routerLink]="['listar-aluno']" class="nav-link active" aria-current="page" href="#">Listar Alunos</a>
         </li>
         <li class="nav-item" *ngIf="usuario?.tipo === 1">
-          <a class="nav-link active" aria-current="page" href="#">Listar Professores</a>
+          <a [routerLink]="['listar-professor']" class="nav-link active" aria-current="page" href="#">Listar Professores</a>
         </li>
         <li class="nav-item" *ngIf="usuario?.tipo === 1">
-          <a class="nav-link active" aria-current="page" href="#">Listar Cursos</a>
+          <a [routerLink]="['listar-curso']" class="nav-link active" aria-current="page" href="#">Listar Cursos</a>
         </li>
         <li class="nav-item" *ngIf="usuario?.tipo === 1">
-          <a class="nav-link active" aria-current="page" href="#">Adicionar Curso</a>
+          <a [routerLink]="['cadastro-curso']" class="nav-link active" aria-current="page" href="#">Adicionar Curso</a>
         </li>
         <li class="nav-item" *ngIf="usuario?.tipo === 2">
           <a class="nav-link" href="#">Meus cursos</a>
         </li>
         <li class="nav-item" *ngIf="usuario?.tipo === 2">
           <a class="nav-link" href="#">Matricular</a>
+        </li>
+        <li style="float: right" class="nav-item">
+          <a class="nav-link" (click)="sair()" href="#">Sair</a>
         </li>
       </ul>
     </div>

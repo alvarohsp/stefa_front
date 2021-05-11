@@ -1,0 +1,25 @@
+<div>
+    <h1>Lista de cursos cadastrados</h1>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">ID Professor</th>
+            <th scope="col">Aulas</th>
+        </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let p of cursos">
+            <th scope="row"></th>
+            <td>{{p.nome}}</td>
+            <td>{{p.descricao}}</td>
+            <td>{{p.idProfessor}}</td>
+            <td>{{p.aulas}}</td>  
+        </tr>
+        </tbody>
+    </table>
+</div>

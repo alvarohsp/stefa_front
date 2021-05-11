@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Aluno } from 'src/app/models/aluno';
 import { AlunoService } from 'src/app/services/aluno.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-cadastro-aluno',
@@ -11,6 +12,7 @@ import { AlunoService } from 'src/app/services/aluno.service';
   styleUrls: ['./cadastro-aluno.component.css']
 })
 export class CadastroAlunoComponent implements OnInit {
+
   aluno: Aluno;
     newAlunoForm: FormGroup = new FormGroup({
       email: new FormControl('', Validators.required),
@@ -21,9 +23,12 @@ export class CadastroAlunoComponent implements OnInit {
     });
 
 
-  constructor(private router: Router, private service: AlunoService) { }
+  constructor(private authService: AuthService,private router: Router, private service: AlunoService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['']);
+    }
   }
 
 
@@ -36,7 +41,12 @@ export class CadastroAlunoComponent implements OnInit {
       formacao: this.newAlunoForm.get('formacao').value,
     };
     this.service.incluir(this.aluno).subscribe((mensagem) => {
+      this.toastr.success(mensagem.mensagem)
       console.log(mensagem)
+    },
+    (err) => {
+      this.toastr.error(err.error.message)
+
     })
     
   }

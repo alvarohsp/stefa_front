@@ -19,4 +19,13 @@ export class AuthGuardService implements CanActivate {
     }
     return true;
   }
+
+  itsAProfessor() {
+    const user = this.auth.getUsuario();
+    if(user.tipo != 1){
+      this.router.navigate(['']);
+    }
+    return;
+  }
+
 }

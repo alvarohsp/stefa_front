@@ -1,5 +1,5 @@
 <div>
-    <h1>Lista de professores cadastrados</h1>
+    <h1>Lista de alunos matriculados</h1>
 </div>
 <div>
     <table class="table table-striped">
@@ -7,14 +7,18 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
+            <th scope="col">idade</th>
+            <th scope="col">Formação</th>
             <th scope="col">E-mail</th>
         </tr>
         </thead>
         <tbody>
-         <tr *ngFor="let p of professores">
+         <tr *ngFor="let p of alunos">
             <th scope="row">{{p.id}}</th>
             <td>{{p.nome}}</td>
-            <td>{{p.email}}</td> 
+            <td>{{p.idade}}</td>
+            <td>{{p.formacao}}</td>
+            <td>{{p.email}}</td>  
         </tr>
         </tbody>
     </table>

@@ -17,6 +17,10 @@ import { CadastroComponent } from './pages/public/cadastro/cadastro.component';
 import { LoginComponent } from './pages/public/login/login.component';
 import { PaginaNaoEncontradaComponent } from './pages/public/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { CadastroAlunoComponent } from './pages/public/cadastro-aluno/cadastro-aluno.component';
+import { CadastroProfessorComponent } from './pages/public/cadastro-professor/cadastro-professor.component';
+import { ListarAlunoComponent } from './pages/private/professor/listar-aluno/listar-aluno.component';
+import { ListarCursoComponent } from './pages/private/professor/listar-curso/listar-curso.component';
+import { CadastroCursoComponent } from './pages/private/professor/cadastro-curso/cadastro-curso.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -32,6 +36,10 @@ export function tokenGetter() {
     PaginaNaoEncontradaComponent,
     HeaderComponent,
     CadastroAlunoComponent,
+    CadastroProfessorComponent,
+    ListarAlunoComponent,
+    ListarCursoComponent,
+    CadastroCursoComponent,
   ],
   imports: [
     BrowserModule,
