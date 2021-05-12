@@ -5,20 +5,24 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
             <th scope="col">ID Professor</th>
             <th scope="col">Aulas</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
          <tr *ngFor="let p of cursos">
-            <th scope="row"></th>
+            <th scope="row">{{p.id}}</th>
             <td>{{p.nome}}</td>
             <td>{{p.descricao}}</td>
             <td>{{p.idProfessor}}</td>
-            <td>{{p.aulas}}</td>  
+            <td>{{p.aulas[0].nome}}...</td>
+            <td><button class="btn btn-outline-primary" (click)="listarAulas(p.id)">Ver aulas</button></td>
+            <td><button class="btn btn-primary" (click)="novaAula(p.id)">Adicionar aula</button></td>  
         </tr>
         </tbody>
     </table>

@@ -5,5 +5,6 @@ export interface Curso {
     nome?: string;
     descricao?: string;
     idProfessor?: number;
-    aulas?: Aula[];    
+    aulas?: Aula[];
+    id?: number;    
 }

@@ -1,0 +1,18 @@
+<div class="box">
+    <form [formGroup]="newAulaForm" (ngSubmit)="createAula()">
+      <div class="mb-3">
+        <label for="tx-nome" class="form-label">Nome</label>
+        <input type="text" formControlName="nome" class="form-control" id="tx-nome"/>
+      </div>
+      <div class="mb-3">
+        <label for="tx-duracao" class="form-label">Duração</label>
+        <input type="text" formControlName="duracao" class="form-control" id="tx-duracao" />
+      </div>
+      <div class="mb-3">
+        <label for="tx-topicos" class="form-label">Topicos</label>
+        <input type="text" formControlName="topicos" class="form-control" id="tx-topicos" />
+      </div>
+      <button type="submit" class="btn btn-primary mr-5">Criar aula</button>
+      <a (click)="returnHome()" class="btn btn-outline-primary">Voltar para o inicio</a>
+    </form>
+  </div>

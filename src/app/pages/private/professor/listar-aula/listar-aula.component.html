@@ -1,0 +1,24 @@
+<div>
+    <h2>Lista de Aulas do curso "{{cursoNome}}"</h2>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Duração</th>
+            <th scope="col">Topicos</th>
+        </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let p of aulas">
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.nome}}</td>
+            <td>{{p.duracao}} horas</td>
+            <td>{{p.topicos}}</td>
+            <td>...</td>  
+        </tr>
+        </tbody>
+    </table>
+</div>

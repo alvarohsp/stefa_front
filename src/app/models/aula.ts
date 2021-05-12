@@ -4,4 +4,5 @@ export interface Aula {
     duracao?: number;
     idCurso?: number;
     topicos?: string[];
+    id?: number;
 }

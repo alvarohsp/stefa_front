@@ -21,6 +21,8 @@ import { CadastroProfessorComponent } from './pages/public/cadastro-professor/ca
 import { ListarAlunoComponent } from './pages/private/professor/listar-aluno/listar-aluno.component';
 import { ListarCursoComponent } from './pages/private/professor/listar-curso/listar-curso.component';
 import { CadastroCursoComponent } from './pages/private/professor/cadastro-curso/cadastro-curso.component';
+import { ListarAulaComponent } from './pages/private/professor/listar-aula/listar-aula.component';
+import { CadastroAulaComponent } from './pages/private/professor/cadastro-aula/cadastro-aula.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -40,6 +42,8 @@ export function tokenGetter() {
     ListarAlunoComponent,
     ListarCursoComponent,
     CadastroCursoComponent,
+    ListarAulaComponent,
+    CadastroAulaComponent,
   ],
   imports: [
     BrowserModule,

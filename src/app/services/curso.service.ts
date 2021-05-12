@@ -20,4 +20,8 @@ export class CursoService {
   listar(): Observable<Curso[]> {
     return this.httpClient.get<Curso[]>(URL);
   }
+
+  obterPorId(id: Number): Observable<Curso> {
+    return this.httpClient.get<Curso>(URL + '/' + id);
+  }
 }

@@ -9,12 +9,20 @@
         <input type="text" formControlName="descricao" class="form-control" id="tx-descricao" />
       </div>
       <div class="mb-3">
-        <label for="tx-aulas" class="form-label">Aulas</label>
-        <input type="text" formControlName="aulas" class="form-control" id="tx-aulas" />
-      </div>
-      <div class="mb-3">
         <label for="tx-idProf" class="form-label">ID Professor</label>
         <input type="text" formControlName="idProfessor" class="form-control" id="tx-idProf" />
+      </div>
+      <div class="mb-3">
+        <label for="tx-aulaNome" class="form-label">Nome da aula</label>
+        <input type="text" formControlName="aulaNome" class="form-control" id="tx-aulaNome" />
+      </div>
+      <div class="mb-3">
+        <label for="tx-aulaDuracao" class="form-label">Duração da Aula</label>
+        <input type="text" formControlName="aulaDuracao" class="form-control" id="tx-aulaDuracao" />
+      </div>
+      <div class="mb-3">
+        <label for="tx-aulaTopicos" class="form-label">Topicos da Aula</label>
+        <input type="text" formControlName="aulaTopicos" class="form-control" id="tx-aulaTopicos" />
       </div>
       <button type="submit" class="btn btn-primary mr-5">Criar curso</button>
       <a (click)="returnHome()" class="btn btn-outline-primary">Voltar para o inicio</a>
