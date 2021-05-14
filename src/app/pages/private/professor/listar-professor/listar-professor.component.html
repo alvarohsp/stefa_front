@@ -1,5 +1,5 @@
 <div>
-    <h1>Lista de professores cadastrados</h1>
+    <h2 style="text-align: center;">Lista de professores cadastrados</h2>
 </div>
 <div>
     <table class="table table-striped">
@@ -8,13 +8,17 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">E-mail</th>
+            <th scope="col">Leciona</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
          <tr *ngFor="let p of professores">
             <th scope="row">{{p.id}}</th>
             <td>{{p.nome}}</td>
-            <td>{{p.email}}</td> 
+            <td>{{p.email}}</td>
+            <td>{{p.leciona}}</td>
+            <td><button class="btn btn-danger" (click)="excluirProf(p.id, p.nome)">Excluir Professor</button></td>
         </tr>
         </tbody>
     </table>

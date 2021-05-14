@@ -18,10 +18,23 @@ export class AulaService {
   }
 
   listar(queryP: any): Observable<Aula[]> {
-    const params = new HttpParams().set("idCurso", queryP)
-    
-    return this.httpClient.get<Aula[]>(URL,{params});
-    
+    const params = new HttpParams().set("idCurso", queryP)  
+    return this.httpClient.get<Aula[]>(URL,{params});   
+  }
+
+  obterPorId(id: any, queryP: any): Observable<Aula> {
+    const params = new HttpParams().set("idCurso", queryP)  
+    return this.httpClient.get<Aula>(URL + '/' + id,{params});   
+  }
+
+  excluir(id: any, queryP: any): Observable<Mensagem> {
+    const params = new HttpParams().set("idCurso", queryP) 
+    return this.httpClient.delete<Mensagem>(URL + '/' + id,{params})
+  }
+
+  editar(id: Number, queryP: any, aula: Aula): Observable<Mensagem> {
+    const params = new HttpParams().set("idCurso", queryP) 
+    return this.httpClient.put<Mensagem>(URL + '/' + id, aula, {params})
   }
 
 }

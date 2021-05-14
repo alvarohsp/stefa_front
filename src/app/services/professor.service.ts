@@ -17,13 +17,19 @@ export class ProfessorService {
     return this.httpClient.get<Professor[]>(URL);
   }
 
-  obter() {}
-
   incluir(professor: Professor): Observable<Mensagem> {
     return this.httpClient.post<Mensagem>(URL, professor);
   }
 
-  alterar() {}
+  obterPorId(id: any): Observable<Professor> {
+    return this.httpClient.get<Professor>(URL + '/' + id);
+  }
 
-  excluir() {}
+  editar(id: Number, professor: Professor): Observable<Mensagem> {
+    return this.httpClient.put<Mensagem>(URL + '/' + id, professor)
+  }
+
+  excluir(id: Number): Observable<Mensagem> {
+    return this.httpClient.delete<Mensagem>(URL + '/' + id)
+  }
 }

@@ -24,4 +24,12 @@ export class CursoService {
   obterPorId(id: Number): Observable<Curso> {
     return this.httpClient.get<Curso>(URL + '/' + id);
   }
+
+  excluir(id: Number): Observable<Mensagem> {
+    return this.httpClient.delete<Mensagem>(URL + '/' + id)
+  }
+
+  editar(id: Number, curso: Curso): Observable<Mensagem> {
+    return this.httpClient.put<Mensagem>(URL + '/' + id, curso)
+  }
 }

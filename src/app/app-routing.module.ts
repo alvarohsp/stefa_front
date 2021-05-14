@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { MeuCursoComponent } from './pages/private/aluno/meu-curso/meu-curso.component';
 import { HomeComponent } from './pages/private/home/home.component';
 import { CadastroAulaComponent } from './pages/private/professor/cadastro-aula/cadastro-aula.component';
 import { CadastroCursoComponent } from './pages/private/professor/cadastro-curso/cadastro-curso.component';
@@ -38,12 +39,24 @@ const routes: Routes = [
         component: CadastroCursoComponent
       },
       {
+        path: 'cadastro-curso/:id',
+        component: CadastroCursoComponent
+      },
+      {
         path: 'cadastro-aula',
+        component: CadastroAulaComponent
+      },
+      {
+        path: 'cadastro-aula/:id',
         component: CadastroAulaComponent
       },
       {
         path: 'listar-aula',
         component: ListarAulaComponent
+      },
+      {
+        path: 'meu-curso',
+        component: MeuCursoComponent
       }
     ]
   },
@@ -55,12 +68,18 @@ const routes: Routes = [
     path: 'nova-conta/aluno',
     component: CadastroAlunoComponent,
   },
-
+  {
+    path: 'nova-conta/aluno/:id',
+    component: CadastroAlunoComponent,
+  },
+  {
+    path: 'nova-conta/professor/:id',
+    component: CadastroProfessorComponent,
+  },
   {
     path: 'nova-conta/professor',
     component: CadastroProfessorComponent,
   },
-
   {
     path: 'login',
     component: LoginComponent,

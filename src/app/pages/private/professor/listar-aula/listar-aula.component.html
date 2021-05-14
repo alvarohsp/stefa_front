@@ -1,5 +1,5 @@
 <div>
-    <h2>Lista de Aulas do curso "{{cursoNome}}"</h2>
+    <h2 style="text-align: center;">Lista de Aulas do curso "{{cursoNome}}"</h2>
 </div>
 <div>
     <table class="table table-striped">
@@ -9,15 +9,18 @@
             <th scope="col">Nome</th>
             <th scope="col">Duração</th>
             <th scope="col">Topicos</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
          <tr *ngFor="let p of aulas">
             <th scope="row">{{p.id}}</th>
             <td>{{p.nome}}</td>
-            <td>{{p.duracao}} horas</td>
+            <td>{{p.duracao}}</td>
             <td>{{p.topicos}}</td>
-            <td>...</td>  
+            <td><button class="btn btn-warning" *ngIf="usuario?.tipo === 1" (click)="editarAula(p.id, p.idCurso)">Editar aula</button></td>  
+            <td><button class="btn btn-danger" *ngIf="usuario?.tipo === 1" (click)="excluirAula(p.id, p.idCurso, p.nome)">Excluir aula</button></td>
         </tr>
         </tbody>
     </table>

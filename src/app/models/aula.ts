@@ -1,8 +1,13 @@
 export interface Aula {
     
+    id?: number;
     nome?: string;
     duracao?: number;
     idCurso?: number;
     topicos?: string[];
-    id?: number;
+    
+}
+
+export class Aula {
+    constructor(public id?: number, nome?: string, duracao?: number, idCurso?: number, topicos?: string){}
 }

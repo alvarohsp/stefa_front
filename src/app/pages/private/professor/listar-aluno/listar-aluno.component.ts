@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Aluno } from 'src/app/models/aluno';
+import { Curso } from 'src/app/models/curso';
 import { AlunoService } from 'src/app/services/aluno.service';
+import { CursoService } from 'src/app/services/curso.service';
 
 
 @Component({
@@ -10,10 +14,9 @@ import { AlunoService } from 'src/app/services/aluno.service';
 })
 export class ListarAlunoComponent implements OnInit {
 
-  user: any
   alunos: Array <Aluno> = []
 
-  constructor(private service: AlunoService) { }
+  constructor(private service: AlunoService,private router: Router, private toastr: ToastrService, private cursoService: CursoService) { }
 
   ngOnInit(): void {
 
@@ -22,4 +25,28 @@ export class ListarAlunoComponent implements OnInit {
     })
   }
 
+  editarAluno(id: any) {
+    this.router.navigate([`nova-conta/aluno/${id}`])
+
+
+  }
+
+  excluirAluno(id: any, nome: string){
+    const del = confirm(`Deseja excluir o aluno "${nome}"?`)
+    if (del == true){
+      this.service.excluir(id).subscribe(
+        (excluir) => {
+          this.toastr.success(excluir.mensagem)
+          console.log(excluir.mensagem)
+          this.ngOnInit()
+        },
+        (err) => {
+          this.toastr.error(err.error.message)
+        }
+      )
+    }
+
+  }
+
 }
+

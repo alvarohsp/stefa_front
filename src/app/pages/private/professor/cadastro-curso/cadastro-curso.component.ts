@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
@@ -14,7 +14,7 @@ import { Aula } from 'src/app/models/aula';
 })
 export class CadastroCursoComponent implements OnInit {
 
-  curso: Curso;
+  curso: Curso = new Curso(0,'','',0,[])
     newCursoForm: FormGroup = new FormGroup({
       nome: new FormControl('', Validators.required),
       descricao: new FormControl('', Validators.required),
@@ -25,13 +25,52 @@ export class CadastroCursoComponent implements OnInit {
     });
 
     aula: Array <Aula> = []
-
+    id: any = 0
+    txtBotao: string = "Criar curso"
+    txtTitulo = "Cadastar um curso"    
     
-  constructor(private authService: AuthService,private router: Router, private toastr: ToastrService, private service: CursoService) { }
+    
+  constructor(private authService: AuthService,private router: Router, private toastr: ToastrService, private service: CursoService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+
+    this.activatedRoute.params.subscribe(param => {
+
+      if (param['id']){
+        this.id = param['id']
+        this.txtBotao = "Editar curso"
+        this.txtTitulo = "Editando curso"
+        this.service.obterPorId(Number(this.id)).subscribe(cursoDb =>{
+          this.curso = cursoDb
+        })
+      }
+    })
   }
 
+
+  editarCurso(){
+   
+    this.service.editar(this.curso.id, this.curso).subscribe((r) => {
+      this.toastr.success(r.mensagem)
+    },
+    (err) => {
+      this.toastr.error(err.error.message)
+
+    })
+    console.log(this.curso)
+  }
+
+  submitBtn() {
+    console.log(this.id)
+    if (this.id == 0){
+      this.createCurso()
+    }else{
+      this.editarCurso()
+    }
+
+    
+  }
 
   createCurso() {
 
@@ -66,11 +105,8 @@ export class CadastroCursoComponent implements OnInit {
     
   }
 
-
   returnHome() {
     this.router.navigate(['']);
   }
-
-
 
 }

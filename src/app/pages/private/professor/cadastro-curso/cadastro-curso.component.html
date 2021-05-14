@@ -1,30 +1,33 @@
 <div class="box">
-    <form [formGroup]="newCursoForm" (ngSubmit)="createCurso()">
+  <h2 style="text-align: center;">{{txtTitulo}}</h2>
+    <form [formGroup]="newCursoForm" (ngSubmit)="submitBtn()">
       <div class="mb-3">
         <label for="tx-nome" class="form-label">Nome</label>
-        <input type="text" formControlName="nome" class="form-control" id="tx-nome"/>
+        <input type="text" formControlName="nome" class="form-control" [(ngModel)]="curso.nome" id="tx-nome" />
       </div>
       <div class="mb-3">
         <label for="tx-descricao" class="form-label">Descrição</label>
-        <input type="text" formControlName="descricao" class="form-control" id="tx-descricao" />
+        <input type="text" formControlName="descricao" class="form-control" [(ngModel)]="curso.descricao" id="tx-descricao" />
       </div>
       <div class="mb-3">
         <label for="tx-idProf" class="form-label">ID Professor</label>
-        <input type="text" formControlName="idProfessor" class="form-control" id="tx-idProf" />
+        <input type="text" formControlName="idProfessor" class="form-control" [(ngModel)]="curso.idProfessor" id="tx-idProf" />
       </div>
-      <div class="mb-3">
-        <label for="tx-aulaNome" class="form-label">Nome da aula</label>
-        <input type="text" formControlName="aulaNome" class="form-control" id="tx-aulaNome" />
+      <div *ngIf="id==0">
+        <div class="mb-3">
+          <label for="tx-aulaNome" class="form-label">Nome da aula</label>
+          <input type="text" formControlName="aulaNome" class="form-control" id="tx-aulaNome" />
+        </div>
+        <div class="mb-3">
+          <label for="tx-aulaDuracao" class="form-label">Duração da Aula</label>
+          <input type="text" formControlName="aulaDuracao" class="form-control" id="tx-aulaDuracao" />
+        </div>
+        <div class="mb-3">
+          <label for="tx-aulaTopicos" class="form-label">Topicos da Aula</label>
+          <input type="text" formControlName="aulaTopicos" class="form-control" id="tx-aulaTopicos" />
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="tx-aulaDuracao" class="form-label">Duração da Aula</label>
-        <input type="text" formControlName="aulaDuracao" class="form-control" id="tx-aulaDuracao" />
-      </div>
-      <div class="mb-3">
-        <label for="tx-aulaTopicos" class="form-label">Topicos da Aula</label>
-        <input type="text" formControlName="aulaTopicos" class="form-control" id="tx-aulaTopicos" />
-      </div>
-      <button type="submit" class="btn btn-primary mr-5">Criar curso</button>
+      <button type="submit" class="btn btn-primary mr-5">{{txtBotao}}</button>
       <a (click)="returnHome()" class="btn btn-outline-primary">Voltar para o inicio</a>
     </form>
   </div>

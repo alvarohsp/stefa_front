@@ -1,5 +1,6 @@
 <div class="box">
-    <form [formGroup]="newAlunoForm" (ngSubmit)="createAlunoAcc()">
+  <h3>{{txtTitulo}}</h3>
+    <form [formGroup]="newAlunoForm" (ngSubmit)="submitBtn()" style="width: 100%;">
       <div class="mb-3">
         <label for="tx-email" class="form-label">E-mail</label>
         <input type="email" formControlName="email" class="form-control" id="tx-email"/>
@@ -20,7 +21,7 @@
         <label for="tx-formacao" class="form-label">Formação</label>
         <input type="text" formControlName="formacao" class="form-control" id="tx-formacao" />
       </div>
-      <button type="submit" class="btn btn-primary mr-5">Criar conta</button>
+      <button type="submit" class="btn btn-primary mr-5">{{txtBotao}}</button>
       <a (click)="returnHome()" class="btn btn-outline-primary">Voltar para o inicio</a>
     </form>
   </div>

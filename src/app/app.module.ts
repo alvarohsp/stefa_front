@@ -23,6 +23,7 @@ import { ListarCursoComponent } from './pages/private/professor/listar-curso/lis
 import { CadastroCursoComponent } from './pages/private/professor/cadastro-curso/cadastro-curso.component';
 import { ListarAulaComponent } from './pages/private/professor/listar-aula/listar-aula.component';
 import { CadastroAulaComponent } from './pages/private/professor/cadastro-aula/cadastro-aula.component';
+import { MeuCursoComponent } from './pages/private/aluno/meu-curso/meu-curso.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwttoken');
@@ -44,6 +45,7 @@ export function tokenGetter() {
     CadastroCursoComponent,
     ListarAulaComponent,
     CadastroAulaComponent,
+    MeuCursoComponent,
   ],
   imports: [
     BrowserModule,

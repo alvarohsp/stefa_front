@@ -1,5 +1,5 @@
 <div>
-    <h2 style="text-align: center;">Lista de cursos cadastrados</h2>
+    <h1>Meus cursos</h1>
 </div>
 <div>
     <table class="table table-striped">
@@ -12,22 +12,17 @@
             <th scope="col">Aulas</th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-         <tr *ngFor="let p of cursos">
+         <tr *ngFor="let p of meusCursos">
             <th scope="row">{{p.id}}</th>
             <td>{{p.nome}}</td>
             <td>{{p.descricao}}</td>
             <td>{{p.idProfessor}}</td>
             <td>{{p.aulas[0].nome}}...</td>
             <td><button class="btn btn-outline-primary" (click)="listarAulas(p.id)">Ver aulas</button></td>
-            <td><button class="btn btn-success" *ngIf="usuario?.tipo === 2" (click)="matricular(p.id, p.nome)">Matricular</button></td>
-            <td><button class="btn btn-primary" *ngIf="usuario?.tipo === 1" (click)="novaAula(p.id)">Adicionar aula</button></td>
-            <td><button class="btn btn-warning" *ngIf="usuario?.tipo === 1" (click)="editarCurso(p.id)">Editar curso</button></td>  
-            <td><button class="btn btn-danger" *ngIf="usuario?.tipo === 1" (click)="excluirCurso(p.id, p.nome)">Excluir curso</button></td>     
+            <td><button class="btn btn-outline-success" (click)="avaliarCurso(p.id, p.nome)">Avaliar curso</button></td>            
         </tr>
         </tbody>
     </table>

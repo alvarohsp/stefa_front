@@ -1,5 +1,5 @@
 <div>
-    <h1>Lista de alunos matriculados</h1>
+    <h2 style="text-align: center;">Lista de alunos matriculados</h2>
 </div>
 <div>
     <table class="table table-striped">
@@ -10,6 +10,9 @@
             <th scope="col">idade</th>
             <th scope="col">Formação</th>
             <th scope="col">E-mail</th>
+            <th scope="col">Cursando</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -18,7 +21,10 @@
             <td>{{p.nome}}</td>
             <td>{{p.idade}}</td>
             <td>{{p.formacao}}</td>
-            <td>{{p.email}}</td>  
+            <td>{{p.email}}</td>
+            <td>{{p.cursos}}</td>
+            <td><button class="btn btn-warning" (click)="editarAluno(p.id)">Editar aluno</button></td>  
+            <td><button class="btn btn-danger" (click)="excluirAluno(p.id, p.nome)">Excluir aluno</button></td>  
         </tr>
         </tbody>
     </table>

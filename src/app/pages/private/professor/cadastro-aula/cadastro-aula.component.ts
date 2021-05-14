@@ -13,35 +13,65 @@ import { AulaService } from 'src/app/services/aula.service';
 })
 export class CadastroAulaComponent implements OnInit {
 
-  queryP: any
-  aula: Aula;
-    newAulaForm: FormGroup = new FormGroup({
-      nome: new FormControl('', Validators.required),
-      duracao: new FormControl(0, Validators.required),
-      topicos: new FormControl('', Validators.required), 
-    });
+  queryP = 0
+  idAula = 0
+  aula: Aula = new Aula(0,'',0,0,'')
+   
+    txtBotao = "Criar aula"
+    txtTitulo = "Criando aula"
 
 
   constructor(private authService: AuthService,private router: Router, private toastr: ToastrService, private service: AulaService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.activatedRoute.queryParams.subscribe(parametros =>{
-      if (parametros['idCurso']){
-        this.queryP = parametros.idCurso
+    this.activatedRoute.queryParams.subscribe(qParam =>{
+      if (qParam['idCurso']){
+        this.queryP = Number(qParam.idCurso)
+        this.aula.idCurso = this.queryP
+      }
+    })
+
+    this.activatedRoute.params.subscribe(param => {
+
+      if (param['id']){
+        this.idAula = Number(param['id'])
+        this.txtBotao = "Editar aula"
+        this.txtTitulo = "Editando aula"
+        this.service.obterPorId(Number(this.idAula), this.queryP).subscribe(AulaDb =>{
+          this.aula = AulaDb
+          console.log(this.aula)
+        })
       }
     })
   }
-    
-  createAula(){
-    this.aula = {
-      nome: this.newAulaForm.get('nome').value,
-      duracao: this.newAulaForm.get('duracao').value,
-      topicos: this.newAulaForm.get('topicos').value,
-      idCurso: Number(this.queryP)
-    }
+ 
+  submitBtn() {
     console.log(this.aula)
-  
+
+    if (this.idAula === 0){
+      this.createAula()
+    }else{
+      this.editarAula()
+    }
+  }
+
+
+  editarAula(){
+
+    this.service.editar(this.aula.id, this.aula.idCurso, this.aula).subscribe((r) => {
+      this.toastr.success(r.mensagem)
+      this.router.navigate(['listar-curso']);
+    },
+    (err) => {
+      this.toastr.error(err.error.message)
+
+    })
+
+  }
+
+
+  createAula(){
     this.service.incluir(this.aula).subscribe((retorno) => {
       this.toastr.success(retorno.mensagem)
     },
@@ -52,7 +82,7 @@ export class CadastroAulaComponent implements OnInit {
   }
 
   returnHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['listar-curso']);
   }
 
 }
